@@ -4,6 +4,7 @@ import com.hdeva.nytimes.NyTimesApp
 import com.hdeva.nytimes.arch.di.injectors.ActivityInjectorModule
 import com.hdeva.nytimes.arch.di.injectors.ApplicationInjectorModule
 import com.hdeva.nytimes.arch.di.modules.CommonModule
+import com.hdeva.nytimes.arch.viewmodel.ViewModelModule
 import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
@@ -14,7 +15,8 @@ import javax.inject.Singleton
     AndroidSupportInjectionModule::class,
     ApplicationInjectorModule::class,
     ActivityInjectorModule::class,
-    CommonModule::class
+    CommonModule::class,
+    ViewModelModule::class
 ])
 interface ApplicationComponent : AndroidInjector<NyTimesApp> {
 

@@ -9,10 +9,12 @@ import com.hdeva.nytimes.databinding.ActivityHomeBinding
 class HomeActivity : BaseActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var viewModel: HomeActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.NyTimes_Theme)
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
+        viewModel = getViewModel(HomeActivityViewModel::class.java)
     }
 }
