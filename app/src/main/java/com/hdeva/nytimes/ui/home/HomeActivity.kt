@@ -1,9 +1,10 @@
-package com.hdeva.nytimes
+package com.hdeva.nytimes.ui.home
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.hdeva.nytimes.R
+import com.hdeva.nytimes.arch.base.BaseActivity
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
