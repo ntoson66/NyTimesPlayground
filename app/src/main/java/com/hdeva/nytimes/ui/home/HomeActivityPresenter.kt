@@ -58,6 +58,7 @@ class HomeActivityPresenter @Inject constructor(
         with(activity.binding) {
             invisible(homeProgressBar, homeErrorContainer, homeRefreshFailed)
             visible(homeRefreshLayout)
+            homeRefreshLayout.isRefreshing = true
         }
         adapter.articles = result.articles
     }
@@ -66,6 +67,7 @@ class HomeActivityPresenter @Inject constructor(
         with(activity.binding) {
             invisible(homeProgressBar, homeErrorContainer)
             visible(homeRefreshLayout, homeRefreshFailed)
+            homeRefreshLayout.isRefreshing = false
         }
         adapter.articles = result.articles
     }
@@ -83,6 +85,7 @@ class HomeActivityPresenter @Inject constructor(
         with(activity.binding) {
             invisible(homeProgressBar, homeRefreshLayout, homeRefreshFailed)
             visible(homeErrorContainer)
+            homeRefreshLayout.isRefreshing = false
         }
     }
 }
