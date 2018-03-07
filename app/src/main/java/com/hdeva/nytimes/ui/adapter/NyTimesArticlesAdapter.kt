@@ -17,6 +17,10 @@ class NyTimesArticlesAdapter @Inject constructor() : RecyclerView.Adapter<NyTime
     }
 
     var articles: List<NyTimesArticle> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NyTimesArticleViewHolder {
         val binding = DataBindingUtil.inflate<ItemNyTimesArticleBinding>(LayoutInflater.from(parent.context), R.layout.item_ny_times_article, parent, false)
