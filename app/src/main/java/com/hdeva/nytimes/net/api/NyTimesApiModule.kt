@@ -1,6 +1,7 @@
 package com.hdeva.nytimes.net.api
 
 import com.hdeva.nytimes.net.NetworkModule
+import com.hdeva.nytimes.net.converter.NyTimesArticlesConverter
 import com.hdeva.nytimes.net.interceptor.NyTimesApiKeyInterceptor
 import com.squareup.moshi.Moshi
 import dagger.Module
@@ -21,6 +22,7 @@ class NyTimesApiModule {
     @Named(NY_TIMES_API)
     fun provideNyTimesMoshi(builder: Moshi.Builder): Moshi {
         return builder
+                .add(NyTimesArticlesConverter())
                 .build()
     }
 
