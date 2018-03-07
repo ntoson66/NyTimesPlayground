@@ -22,11 +22,15 @@ android {
             useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             applicationIdSuffix ".debug"
+
+            resValue "string", "ny_times_api_key", "8d4a66473b2e4ef2925e514592ac5e46"
         }
 
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            resValue "string", "ny_times_api_key", "8d4a66473b2e4ef2925e514592ac5e46"
         }
     }
 
