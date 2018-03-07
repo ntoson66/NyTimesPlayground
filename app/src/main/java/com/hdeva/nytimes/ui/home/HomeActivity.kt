@@ -1,6 +1,5 @@
 package com.hdeva.nytimes.ui.home
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import com.hdeva.nytimes.R
 import com.hdeva.nytimes.arch.base.BaseActivity
