@@ -17,7 +17,7 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
         setSupportActionBar(findViewById(R.id.support_toolbar))
     }
 
-    protected fun <VM : ViewModel> getViewModel(viewModelKey: Class<VM>): VM {
+    fun <VM : ViewModel> getViewModel(viewModelKey: Class<VM>): VM {
         return ViewModelProviders.of(this, factory).get(viewModelKey)
     }
 }

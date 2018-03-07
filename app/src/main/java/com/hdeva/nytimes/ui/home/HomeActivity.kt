@@ -5,16 +5,19 @@ import android.os.Bundle
 import com.hdeva.nytimes.R
 import com.hdeva.nytimes.arch.base.BaseActivity
 import com.hdeva.nytimes.databinding.ActivityHomeBinding
+import javax.inject.Inject
 
 class HomeActivity : BaseActivity() {
 
-    private lateinit var binding: ActivityHomeBinding
-    private lateinit var viewModel: HomeActivityViewModel
+    lateinit var binding: ActivityHomeBinding
+    lateinit var viewModel: HomeActivityViewModel
+
+    @Inject
+    lateinit var presenter: HomeActivityPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.NyTimes_Theme)
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
-        viewModel = getViewModel(HomeActivityViewModel::class.java)
+        presenter.create()
     }
 }
