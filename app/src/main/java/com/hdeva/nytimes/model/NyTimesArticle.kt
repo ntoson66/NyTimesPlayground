@@ -14,9 +14,5 @@ data class NyTimesArticle(
         val id: Long,
         val assetId: Long,
         val views: Long,
-        val desFacet: List<String>,
-        val orgFacet: List<String>,
-        val perFacet: List<String>,
-        val geoFacet: List<String>,
-        val media: NyTimesMedia?
+        val media: List<NyTimesMedia>?
 )

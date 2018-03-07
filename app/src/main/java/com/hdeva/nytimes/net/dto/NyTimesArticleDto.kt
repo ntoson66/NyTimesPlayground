@@ -14,9 +14,5 @@ class NyTimesArticleDto(
         val id: Long?,
         val asset_id: Long?,
         val views: Long?,
-        val des_facet: List<String>?,
-        val org_facet: List<String>?,
-        val per_facet: List<String>?,
-        val geo_facet: List<String>?,
-        val media: NyTimesMediaDto?
+        val media: List<NyTimesMediaDto>?
 )

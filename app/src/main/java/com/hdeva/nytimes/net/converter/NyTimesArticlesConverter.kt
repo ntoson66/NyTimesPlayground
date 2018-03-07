@@ -37,11 +37,7 @@ class NyTimesArticlesConverter {
                 id = dto.id ?: 0L,
                 assetId = dto.asset_id ?: 0L,
                 views = dto.views ?: 0L,
-                desFacet = dto.des_facet ?: emptyList(),
-                orgFacet = dto.org_facet ?: emptyList(),
-                perFacet = dto.per_facet ?: emptyList(),
-                geoFacet = dto.geo_facet ?: emptyList(),
-                media = if (dto.media == null) null else mapDto(dto.media)
+                media = dto.media?.map { mapDto(it) } ?: emptyList()
         )
     }
 
