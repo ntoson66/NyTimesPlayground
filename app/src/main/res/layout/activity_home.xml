@@ -66,6 +66,22 @@
 
             </android.support.v4.widget.SwipeRefreshLayout>
 
+            <FrameLayout
+                android:id="@+id/home_refresh_failed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/offline_red"
+                android:foreground="?attr/selectableItemBackground"
+                android:padding="@dimen/padding_medium">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="@string/something_went_wrong_tap_to_reload" />
+
+            </FrameLayout>
+
         </FrameLayout>
 
     </LinearLayout>
