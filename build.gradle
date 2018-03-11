@@ -47,7 +47,6 @@ allprojects {
         rx_java_version = '2.1.6'
 
         glide_version = '4.3.1'
-        jsr_310_version = '1.0.5'
 
         junit_version = '4.12'
         robolectric_version = '3.7.1'
