@@ -1,5 +1,6 @@
 package com.hdeva.nytimes.ui.article
 
+import android.content.Intent
 import com.hdeva.nytimes.model.NyTimesArticle
 import junit.framework.Assert.assertEquals
 import org.junit.Test
@@ -12,8 +13,7 @@ class ArticleActivityPresenterTest {
 
     @Test
     fun test_ui_in_correct_state() {
-        val activity = Robolectric.setupActivity(ArticleActivity::class.java)
-        activity.article = NyTimesArticle(
+        val article = NyTimesArticle(
                 url = "https://google.com",
                 adxKeywords = "",
                 column = "",
@@ -29,6 +29,8 @@ class ArticleActivityPresenterTest {
                 views = 0,
                 media = null
         )
+
+        val activity = Robolectric.buildActivity(ArticleActivity::class.java, Intent().putExtra("article", article)).setup().get()
 
         assertEquals(activity.binding.articleTitle.text, "title")
         assertEquals(activity.binding.articleAbstract.text, "abstract")
