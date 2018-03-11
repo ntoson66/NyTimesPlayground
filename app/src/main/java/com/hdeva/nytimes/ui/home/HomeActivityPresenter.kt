@@ -2,6 +2,7 @@ package com.hdeva.nytimes.ui.home
 
 import android.arch.lifecycle.Observer
 import android.databinding.DataBindingUtil
+import android.support.annotation.VisibleForTesting
 import android.support.v7.widget.LinearLayoutManager
 import com.hdeva.nytimes.R
 import com.hdeva.nytimes.arch.viewmodel.RepositoryLiveData
@@ -47,14 +48,16 @@ class HomeActivityPresenter @Inject constructor(
         })
     }
 
-    private fun handleProgress() {
+    @VisibleForTesting
+    internal fun handleProgress() {
         with(activity.binding) {
             visible(homeProgressBar)
             invisible(homeRefreshLayout, homeErrorContainer, homeRefreshFailed)
         }
     }
 
-    private fun handleResult(result: NyTimesArticles) {
+    @VisibleForTesting
+    internal fun handleResult(result: NyTimesArticles) {
         with(activity.binding) {
             invisible(homeProgressBar, homeErrorContainer, homeRefreshFailed)
             visible(homeRefreshLayout)
@@ -81,7 +84,8 @@ class HomeActivityPresenter @Inject constructor(
         adapter.articles = result.articles
     }
 
-    private fun handleError(throwable: Throwable) {
+    @VisibleForTesting
+    internal fun handleError(throwable: Throwable) {
         with(activity.binding) {
             invisible(homeProgressBar, homeRefreshLayout, homeRefreshFailed)
             visible(homeErrorContainer)
