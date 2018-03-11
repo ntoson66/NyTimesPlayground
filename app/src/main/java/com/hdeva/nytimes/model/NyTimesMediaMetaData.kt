@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class NyTimesMediaMetaData(
-        val type: String,
+        val url: String,
         val format: String,
         val height: Int,
         val width: Int

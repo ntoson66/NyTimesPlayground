@@ -54,7 +54,7 @@ class NyTimesArticlesConverter {
 
     private fun mapDto(dto: NyTimesMediaMetaDataDto): NyTimesMediaMetaData {
         return NyTimesMediaMetaData(
-                type = dto.type ?: "",
+                url = dto.url ?: "",
                 format = dto.format ?: "",
                 height = dto.height ?: 0,
                 width = dto.width ?: 0
