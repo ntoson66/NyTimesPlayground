@@ -14,15 +14,16 @@ class ArticleActivityPresenter @Inject constructor(private val activity: Article
         with(activity) {
             binding = DataBindingUtil.setContentView(this, R.layout.activity_article)
             enableActionBarBack()
-            title = activity.article.title
         }
 
         with(activity.binding) {
+            articleTitle.text = activity.article.title
+            articleAbstract.text = activity.article.abstract
             articleShowButton.setOnClickListener { openInBrowser(activity.article) }
         }
     }
 
-    fun openInBrowser(article: NyTimesArticle) {
+    private fun openInBrowser(article: NyTimesArticle) {
         activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(article.url)))
     }
 }

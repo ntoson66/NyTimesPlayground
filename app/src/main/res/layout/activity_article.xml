@@ -1,19 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <include layout="@layout/support_appbar" />
-
-        <Button
-            android:id="@+id/article_show_button"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/open_in_browser" />
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <include layout="@layout/support_appbar" />
+
+            <TextView
+                android:id="@+id/article_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                tools:text="This is the title of the article, which could be fairly long, more than two lines even" />
+
+            <TextView
+                android:id="@+id/article_abstract"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_medium"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                tools:text="This is the abstract of the article, which could be fairly long, more than two lines even" />
+
+            <Button
+                android:id="@+id/article_show_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/open_in_browser" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </layout>
