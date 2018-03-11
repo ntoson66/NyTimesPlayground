@@ -1,5 +1,6 @@
 package com.hdeva.nytimes.arch.di.injectors
 
+import com.hdeva.nytimes.ui.article.ArticleActivity
 import com.hdeva.nytimes.ui.home.HomeActivity
 import com.hdeva.nytimes.ui.home.HomeActivityModule
 import dagger.Module
@@ -9,5 +10,8 @@ import dagger.android.ContributesAndroidInjector
 interface ActivityInjectorModule {
 
     @ContributesAndroidInjector(modules = [HomeActivityModule::class])
-    fun ContributeHomeActivity(): HomeActivity
+    fun contributeHomeActivity(): HomeActivity
+
+    @ContributesAndroidInjector
+    fun contributeArticleActivity(): ArticleActivity
 }

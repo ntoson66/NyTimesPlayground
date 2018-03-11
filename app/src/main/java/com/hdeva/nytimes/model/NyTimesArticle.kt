@@ -1,5 +1,9 @@
 package com.hdeva.nytimes.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class NyTimesArticle(
         val url: String,
         val adxKeywords: String,
@@ -15,4 +19,4 @@ data class NyTimesArticle(
         val assetId: Long,
         val views: Long,
         val media: List<NyTimesMedia>?
-)
+) : Parcelable

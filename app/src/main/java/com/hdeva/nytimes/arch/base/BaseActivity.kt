@@ -20,4 +20,11 @@ abstract class BaseActivity : DaggerAppCompatActivity() {
     fun <VM : ViewModel> getViewModel(viewModelKey: Class<VM>): VM {
         return ViewModelProviders.of(this, factory).get(viewModelKey)
     }
+
+    protected fun enableActionBarBack() {
+        supportActionBar?.let {
+            it.setDisplayShowHomeEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
+        }
+    }
 }

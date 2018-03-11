@@ -1,14 +1,13 @@
 package com.hdeva.nytimes.ui.adapter.holder
 
-import android.content.Intent
-import android.net.Uri
 import android.support.v7.widget.RecyclerView
 import com.hdeva.nytimes.databinding.ItemNyTimesArticleBinding
 import com.hdeva.nytimes.model.NyTimesArticle
+import com.hdeva.nytimes.ui.article.ArticleActivity
 
 class NyTimesArticleViewHolder(val binding: ItemNyTimesArticleBinding) : RecyclerView.ViewHolder(binding.root) {
 
-    private var article: NyTimesArticle? = null
+    private lateinit var article: NyTimesArticle
 
     init {
         binding.itemNyTimesArticleContainer.setOnClickListener { openArticle() }
@@ -22,6 +21,6 @@ class NyTimesArticleViewHolder(val binding: ItemNyTimesArticleBinding) : Recycle
     }
 
     private fun openArticle() {
-        binding.root.context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(article?.url)))
+        ArticleActivity.showArticle(itemView.context, article)
     }
 }
