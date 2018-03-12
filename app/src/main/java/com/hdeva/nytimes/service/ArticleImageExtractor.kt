@@ -13,7 +13,7 @@ class ArticleImageExtractor {
 
     private fun doFilter(article: NyTimesArticle, filter: String): NyTimesMediaMetaData? {
         return article.media
-                ?.first()
+                ?.firstOrNull()
                 ?.mediaMetadata
                 ?.firstOrNull { it.format == filter }
     }

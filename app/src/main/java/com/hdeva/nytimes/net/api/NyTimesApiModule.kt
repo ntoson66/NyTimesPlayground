@@ -2,8 +2,11 @@ package com.hdeva.nytimes.net.api
 
 import com.hdeva.nytimes.net.NetworkModule
 import com.hdeva.nytimes.net.converter.NyTimesArticlesConverter
+import com.hdeva.nytimes.net.converter.SafeConverter
+import com.hdeva.nytimes.net.dto.NyTimesMediaDto
 import com.hdeva.nytimes.net.interceptor.NyTimesApiKeyInterceptor
 import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -21,9 +24,17 @@ class NyTimesApiModule {
     @Provides
     @Named(NY_TIMES_API)
     fun provideNyTimesMoshi(builder: Moshi.Builder): Moshi {
+        addSafeConverters(builder)
         return builder
                 .add(NyTimesArticlesConverter())
                 .build()
+    }
+
+    private fun addSafeConverters(builder: Moshi.Builder) {
+        val cleanMoshi = builder.build()
+        val type = Types.newParameterizedType(List::class.java, NyTimesMediaDto::class.java)
+        val adapter = cleanMoshi.adapter<List<NyTimesMediaDto>>(type)
+        builder.add(type, SafeConverter<List<NyTimesMediaDto>>(adapter, emptyList()))
     }
 
     @Provides
