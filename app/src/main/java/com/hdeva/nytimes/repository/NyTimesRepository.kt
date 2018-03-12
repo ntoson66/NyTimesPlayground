@@ -18,7 +18,7 @@ class NyTimesRepository @Inject constructor(
     }
 
     fun getDefaultArticles(): Observable<NyTimesArticles> {
-        val remote = queue(api.getNyTimesArticles(DEFAULT_SECTION, DEFAULT_PERIOD, DEFAULT_OFFSET))
+        val remote = queue(api.getNyTimesArticles(DEFAULT_SECTION, DEFAULT_PERIOD, 0))
                 .doOnNext { store.setDefaultArticles(it) }
 
         return if (store.hasDefaultArticles()) {
@@ -26,5 +26,9 @@ class NyTimesRepository @Inject constructor(
         } else {
             remote
         }
+    }
+
+    fun getArticlesWithOffset(page: Int): Observable<NyTimesArticles> {
+        return queue(api.getNyTimesArticles(DEFAULT_SECTION, DEFAULT_PERIOD, page * DEFAULT_OFFSET))
     }
 }

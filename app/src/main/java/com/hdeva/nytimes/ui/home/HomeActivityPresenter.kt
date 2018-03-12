@@ -4,6 +4,7 @@ import android.arch.lifecycle.Observer
 import android.databinding.DataBindingUtil
 import android.support.annotation.VisibleForTesting
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import com.hdeva.nytimes.R
 import com.hdeva.nytimes.arch.viewmodel.RepositoryLiveData
 import com.hdeva.nytimes.extension.invisible
@@ -15,6 +16,8 @@ import javax.inject.Inject
 class HomeActivityPresenter @Inject constructor(
         private val activity: HomeActivity,
         private val adapter: NyTimesArticlesAdapter) {
+
+    private lateinit var layoutManager: LinearLayoutManager
 
     fun create() {
         with(activity) {
@@ -31,8 +34,10 @@ class HomeActivityPresenter @Inject constructor(
             homeRefreshFailed.setOnClickListener { activity.viewModel.refresh() }
             homeRefreshLayout.setOnRefreshListener { activity.viewModel.refresh() }
 
-            homeRecyclerView.layoutManager = LinearLayoutManager(activity)
+            layoutManager = LinearLayoutManager(activity)
+            homeRecyclerView.layoutManager = layoutManager
             homeRecyclerView.adapter = adapter
+            homeRecyclerView.addOnScrollListener(LastItemListener())
         }
     }
 
@@ -90,6 +95,15 @@ class HomeActivityPresenter @Inject constructor(
             invisible(homeProgressBar, homeRefreshLayout, homeRefreshFailed)
             visible(homeErrorContainer)
             homeRefreshLayout.isRefreshing = false
+        }
+    }
+
+    inner class LastItemListener : RecyclerView.OnScrollListener() {
+
+        override fun onScrollStateChanged(recyclerView: RecyclerView?, newState: Int) {
+            if((adapter.itemCount - 1) == layoutManager.findLastVisibleItemPosition()) {
+                activity.viewModel.getNextPageIfNotLoading()
+            }
         }
     }
 }

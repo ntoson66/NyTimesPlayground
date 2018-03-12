@@ -18,7 +18,7 @@ class NyTimesArticlesConverter {
                 status = dto.status ?: "",
                 copyright = dto.copyright ?: "",
                 numResults = dto.num_results ?: 0,
-                articles = dto.results?.map { mapDto(it) } ?: emptyList()
+                articles = dto.results?.map { mapDto(it) }?.toMutableList() ?: mutableListOf()
         )
     }
 

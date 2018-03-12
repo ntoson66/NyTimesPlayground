@@ -4,5 +4,5 @@ data class NyTimesArticles(
         val status: String,
         val copyright: String,
         val numResults: Int,
-        val articles: List<NyTimesArticle>
+        val articles: MutableList<NyTimesArticle>
 )
