@@ -1,5 +1,6 @@
 package com.hdeva.nytimes.service
 
+import android.support.annotation.VisibleForTesting
 import com.hdeva.nytimes.model.NyTimesArticle
 import com.hdeva.nytimes.model.NyTimesMediaMetaData
 
@@ -11,7 +12,8 @@ class ArticleImageExtractor {
 
     fun extractSquare320(article: NyTimesArticle): NyTimesMediaMetaData? = doFilter(article, SQUARE_320)
 
-    private fun doFilter(article: NyTimesArticle, filter: String): NyTimesMediaMetaData? {
+    @VisibleForTesting
+    internal fun doFilter(article: NyTimesArticle, filter: String): NyTimesMediaMetaData? {
         return article.media
                 ?.firstOrNull()
                 ?.mediaMetadata
