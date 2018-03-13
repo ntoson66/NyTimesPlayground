@@ -23,7 +23,7 @@ class HomeActivityPresenterTest {
         assertEquals(activity.binding.homeProgressBar.visibility, View.VISIBLE)
         assertEquals(activity.binding.homeRefreshLayout.visibility, View.INVISIBLE)
 
-        sut.handleResult(NyTimesArticles("", "", 0, emptyList()))
+        sut.handleResult(NyTimesArticles("", "", 0, mutableListOf()))
         assertEquals(activity.binding.homeRefreshLayout.visibility, View.VISIBLE)
         assertEquals(activity.binding.homeProgressBar.visibility, View.INVISIBLE)
         assertTrue(activity.binding.homeRefreshLayout.isRefreshing)
