@@ -8,6 +8,7 @@ import android.support.customtabs.CustomTabsIntent
 import android.support.customtabs.CustomTabsServiceConnection
 import android.support.customtabs.CustomTabsSession
 import android.support.v4.content.ContextCompat
+import android.util.Log
 import com.hdeva.nytimes.R
 import javax.inject.Inject
 
@@ -31,9 +32,13 @@ class WebHelper @Inject constructor() : CustomTabsServiceConnection() {
     }
 
     override fun onCustomTabsServiceConnected(name: ComponentName?, newClient: CustomTabsClient?) {
-        client = newClient
-        client?.warmup(0L)
-        session = client?.newSession(null)
+        try {
+            client = newClient
+            client?.warmup(0L)
+            session = client?.newSession(null)
+        } catch (t: Throwable) {
+            Log.e("WebHelper", "Error creating warmed up custom tabs session", t)
+        }
     }
 
     override fun onServiceDisconnected(name: ComponentName?) {
