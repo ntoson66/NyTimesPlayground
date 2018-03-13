@@ -31,4 +31,9 @@ class ArticleActivity : BaseActivity() {
         presenter.create()
     }
 
+    override fun onDestroy() {
+        presenter.destroy()
+        super.onDestroy()
+    }
+
 }

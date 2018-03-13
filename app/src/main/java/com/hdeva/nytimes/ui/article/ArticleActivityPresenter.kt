@@ -1,14 +1,15 @@
 package com.hdeva.nytimes.ui.article
 
-import android.content.Intent
 import android.databinding.DataBindingUtil
-import android.net.Uri
 import com.hdeva.nytimes.R
 import com.hdeva.nytimes.extension.enableActionBarBack
 import com.hdeva.nytimes.model.NyTimesArticle
+import com.hdeva.nytimes.service.WebHelper
 import javax.inject.Inject
 
-class ArticleActivityPresenter @Inject constructor(private val activity: ArticleActivity) {
+class ArticleActivityPresenter @Inject constructor(
+        private val activity: ArticleActivity,
+        private val webHelper: WebHelper) {
 
     fun create() {
         with(activity) {
@@ -21,9 +22,15 @@ class ArticleActivityPresenter @Inject constructor(private val activity: Article
             articleAbstract.text = activity.article.abstract
             articleShowButton.setOnClickListener { openInBrowser(activity.article) }
         }
+
+        webHelper.connect(activity)
+    }
+
+    fun destroy() {
+        webHelper.disconnect(activity)
     }
 
     private fun openInBrowser(article: NyTimesArticle) {
-        activity.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(article.url)))
+        webHelper.open(activity, article.url)
     }
 }
